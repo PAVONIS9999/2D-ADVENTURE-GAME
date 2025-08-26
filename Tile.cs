@@ -23,10 +23,13 @@ namespace _2D_ADVENTURE_GAME
 
         }
 
-        public Tile(Position P) //constructor that accepts a position parameter type
+        public Tile(Position position) //constructor that accepts a position parameter type
         {
-            position = P;
+           this.position = position;
 
         }
+        //abstract property
+        public abstract char Display
+        { get; }
     }
 }
