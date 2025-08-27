@@ -15,7 +15,7 @@ namespace _2D_ADVENTURE_GAME
         private int width;
         //paralled or 2D array
         Tile[,] Array;
-        
+
 
         //Properties to expose field values
         public int HeiGht
@@ -33,32 +33,32 @@ namespace _2D_ADVENTURE_GAME
             height = height;
             width = width;
             //initializing array using height and width values as the arrays dimensions
-            Array = new Tile[width,height];
-            InitialiseTiles(); 
+            Array = new Tile[width, height];
+            InitialiseTiles();
 
         }
 
         public enum TileType
         {
             Empty
-                
+
 
         }
 
-        private Tile CreateTile( Tile tile, Position position, TileType tileType)
+        private Tile CreateTile(Tile tile, Position position, TileType tileType)
         {
 
-            switch(tileType)
+            switch (tileType)
             {
                 case TileType.Empty:
                     tile = new EmptyTile(position);
-                    Array[width,height] = tile; 
+                    Array[width, height] = tile;
                     break;
-                   
+
                 default:
                     break;
             }
-           
+
             return tile;
         }
         private Tile CreateTile(Tile tile, int x, int y, TileType tileType)//overloading tile method
@@ -82,9 +82,9 @@ namespace _2D_ADVENTURE_GAME
 
         public void InitialiseTiles() // initializeTiles method
         {
-             foreach( Tile tile in Array )
+            foreach (Tile tile in Array)
             {
-                CreateTile(tile,new Position(width,height), TileType.Empty);
+                CreateTile(tile, new Position(width, height), TileType.Empty);
             }
 
 
@@ -93,9 +93,9 @@ namespace _2D_ADVENTURE_GAME
         public override string ToString()
         {
             string longStr = "";
-            for ( int i = 0; i < Array.GetLength(0); i++)
+            for (int i = 0; i < Array.GetLength(0); i++)
             {
-                for( int j = 0; j < Array.GetLength(1); j++ )
+                for (int j = 0; j < Array.GetLength(1); j++)
                 {
 
 
@@ -110,8 +110,9 @@ namespace _2D_ADVENTURE_GAME
             }
 
             return longStr;
-        
+
         }
+
     }
 }
 
