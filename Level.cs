@@ -14,7 +14,7 @@ namespace _2D_ADVENTURE_GAME
         private int height;
         private int width;
         //paralled or 2D array
-        Tile[,] Array;
+        Tile[,] TileArray;
 
 
         //Properties to expose field values
@@ -27,13 +27,13 @@ namespace _2D_ADVENTURE_GAME
             get { return width; }
         }
 
-        public Level(int height, int width) //constructor
+        public Level(int Height, int Width) //constructor
         {
             //initializing fields
-            height = height;
-            width = width;
+            height = Height;
+            width = Width;
             //initializing array using height and width values as the arrays dimensions
-            Array = new Tile[width, height];
+            TileArray = new Tile[width, height];
             InitialiseTiles();
 
         }
@@ -45,47 +45,53 @@ namespace _2D_ADVENTURE_GAME
 
         }
 
-        private Tile CreateTile(Tile tile, Position position, TileType tileType)
+        private Tile CreateTile(TileType tileType, Position position)
         {
-
+            Tile tile;
+       
             switch (tileType)
             {
                 case TileType.Empty:
                     tile = new EmptyTile(position);
-                    Array[width, height] = tile;
+
                     break;
 
                 default:
+                    return new EmptyTile(position);
                     break;
-            }
 
+            }
+             TileArray[position.Xcord, position.Ycord] = tile;
             return tile;
+
         }
-        private Tile CreateTile(Tile tile, int x, int y, TileType tileType)//overloading tile method
+        private Tile CreateTile( TileType tileType, int x, int y)//overloading tile method
         {
 
-            switch (tileType)
-            {
-                case TileType.Empty:
-                    tile = new EmptyTile(new Position(x, y));
-                    Array[width, height] = tile;
-                    break;
+          Position position = new Position(x, y);  
+            return CreateTile(tileType, position);
 
-                default:
-                    break;
-            }
-
-            return tile;
+            
 
 
         }
 
         public void InitialiseTiles() // initializeTiles method
         {
-            foreach (Tile tile in Array)
-            {
-                CreateTile(tile, new Position(width, height), TileType.Empty);
-            }
+             for (int i = 0; i < TileArray.GetLength(0); i++)
+             {
+                 for (int j = 0; j < TileArray.GetLength(1); j++)
+                 {
+
+                         TileArray[i, j] = CreateTile(TileType.Empty, i, j);
+
+
+
+                 }
+
+             } 
+          
+
 
 
         }
@@ -93,15 +99,15 @@ namespace _2D_ADVENTURE_GAME
         public override string ToString()
         {
             string longStr = "";
-            for (int i = 0; i < Array.GetLength(0); i++)
+            for (int i = 0; i < TileArray.GetLength(0); i++)
             {
-                for (int j = 0; j < Array.GetLength(1); j++)
+                for (int j = 0; j < TileArray.GetLength(1); j++)
                 {
 
 
 
 
-                    longStr += Array[i, j].Display.ToString();
+                    longStr += TileArray[i, j]?.Display ?? ' ';
 
 
 

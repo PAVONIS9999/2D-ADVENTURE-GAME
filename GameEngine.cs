@@ -9,33 +9,30 @@ namespace _2D_ADVENTURE_GAME
     internal class GameEngine
     {
 
-        private Level Level1;
+        private Level Level;
         private int NumberOfLevels;
-        private int Random;
+        
 
         public int MIN_SIZE = 10;
         public int MAX_SIZE = 20;
 
 
-        public GameEngine(int levels)
+        public GameEngine(int levels) // construvtor which initializes number of levels field
         {
 
             NumberOfLevels = levels;
-
-            Level1 = new Level(MIN_SIZE, MAX_SIZE);
+            Random rnd = new Random();
+           
+           
+            Level = new Level(rnd.Next(MIN_SIZE, MAX_SIZE + 1), rnd.Next(MIN_SIZE, MAX_SIZE + 1));//genrating a random numbers between max and min value to create a level
 
         }
 
         public override string ToString()
         {
-            string currentLevel = Level1.ToString();
+            
 
-           
-
-            return currentLevel;
-
-
-
+            return Level.ToString(); ;
 
         }
     }

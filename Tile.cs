@@ -11,21 +11,21 @@ namespace _2D_ADVENTURE_GAME
         private Position position; //private field of type position
         
             //properties to expose x and y values
-        public Position x
+        public int X
         {
-            get { return position; }         
+            get { return position.Xcord; }         
                 
         }
 
-        public Position y
+        public int Y
         {
-            get { return position; }
+            get { return position.Ycord; }
 
         }
 
-        public Tile(Position position) //constructor that accepts a position parameter type
+        public Tile(Position Position) //constructor that accepts a position parameter type
         {
-           this.position = position;
+           position = Position;
 
         }
         //abstract property

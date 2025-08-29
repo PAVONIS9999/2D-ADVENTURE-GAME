@@ -36,7 +36,7 @@
             labelDisplay.AutoSize = true;
             labelDisplay.Location = new Point(367, 86);
             labelDisplay.Name = "labelDisplay";
-            labelDisplay.Size = new Size(38, 15);
+            labelDisplay.Size = new Size(49, 15);
             labelDisplay.TabIndex = 0;
             labelDisplay.Text = "label1";
             // 
@@ -44,10 +44,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(800, 450);
             Controls.Add(labelDisplay);
+            Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
