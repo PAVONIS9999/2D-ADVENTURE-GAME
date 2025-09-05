@@ -8,28 +8,31 @@ namespace _2D_ADVENTURE_GAME
 {
     abstract class Tile
     {
-        private Position position; //private field of type position
-        
-            //properties to expose x and y values
+
+        //properties to expose x and y values
+        public Position Position { get; set; }
         public int X
         {
-            get { return position.Xcord; }         
+            get { return Position.X; }   
+            set { Position.X = value; }
                 
         }
 
         public int Y
         {
-            get { return position.Ycord; }
+            get { return Position.Y; }
+            set { Position.Y = value; }
 
         }
 
         public Tile(Position Position) //constructor that accepts a position parameter type
         {
-           position = Position;
+            this.Position = Position;
 
         }
         //abstract property
         public abstract char Display
         { get; }
+       
     }
 }
